@@ -5,11 +5,11 @@ import img from '../../../Image_Icon/Image/engin-akyurt-g-m8EDc4X6Q-unsplash 1.p
 
 const ScreenSection = () => {
   return (
-    <Box sx={{ background: '#FFF8F5', py: 5 }}>
+    <Box sx={{ background: '#FFF8F5',height: '600px',py: 5, display: 'flex', alignItems: 'center'}}>
       <Container>
         <Grid container spacing={10}>
           <Grid item xs={7}>
-            <img width='100%' src={img} sx={{ width: '100%', height: '' }} alt="" />
+            <img width='580px' src={img} sx={{ width: '100%', height: '' }} alt="" />
           </Grid>
           <Grid item xs={5}>
             <Typography sx={{ fontSize: 34, fontWeight: 600 }}>
