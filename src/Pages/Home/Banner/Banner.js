@@ -1,6 +1,7 @@
 import { Button, Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
+import PrimaryButton from '../../../CoustomStyle/MuiButton';
 import img from '../../../Image_Icon/Image/beautiful-young-asian-woman-touching-her-clean-face-with-fresh-healthy-skin-isolated-white-wall-beauty-cosmetics-facial-treatment-concept 1.png'
 const Banner = () => {
   return (
@@ -18,7 +19,7 @@ const Banner = () => {
               <Typography variant="body1" sx={{ mt: 3 }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat
               </Typography>
-              <Button sx={{ mt: 4 }} variant="contained">Get an Appointment</Button>
+              <PrimaryButton sx={{ mt: 4 }} variant="contained">Get an Appointment</PrimaryButton>
             </Box>
           </Grid>
           <Grid item xs={6}>
@@ -32,4 +33,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default Banner

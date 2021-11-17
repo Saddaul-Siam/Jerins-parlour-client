@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../Banner/Banner';
 import ScreenSection from '../ScreenSection/ScreenSection';
@@ -15,6 +16,7 @@ const Home = () => {
       <ScreenSection />
       <Testimonials />
       <Subscription />
+      <Footer />
     </div>
   );
 };

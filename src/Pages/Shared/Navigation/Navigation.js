@@ -39,8 +39,8 @@ HideOnScroll.propTypes = {
 const Navigation = (props) => {
   const useStyle = makeStyles({
     navbarColor: {
-      backgroundColor: '#6047EC !important',
-      padding: "5px 0"
+      backgroundColor: '#FFF8F5 !important',
+      padding: "5px 0",
     }
 
   });
@@ -154,15 +154,15 @@ const Navigation = (props) => {
                 noWrap
                 component="div"
               >
-                <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/">BIKE BUZZ</NavLink>
+                <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/">BIKE BUZZ</NavLink>
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/home">Home</Link></Button>
-                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/explore">Explore</Link></Button>
+                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/home">Home</Link></Button>
+                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/explore">Explore</Link></Button>
                 {/* {user?.email &&
-                  <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">Dashboard</Link></Button>}
-                {user.email ? '' : <Link style={{ textDecoration: 'none', color: 'white' }} to="/login"><Button color="inherit">Login</Button></Link>}
+                  <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/dashboard">Dashboard</Link></Button>}
+                {user.email ? '' : <Link style={{ textDecoration: 'none', color: 'black' }} to="/login"><Button color="inherit">Login</Button></Link>}
                 {user.email && <IconButton
                   size="large"
                   edge="end"

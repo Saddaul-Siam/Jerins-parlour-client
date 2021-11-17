@@ -1,6 +1,7 @@
 import { Button, Container, Grid, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
+import PrimaryButton from '../../../CoustomStyle/MuiButton';
 import img1 from '../../../Image_Icon/Icon/Group 1372.png'
 import img2 from '../../../Image_Icon/Icon/Group 1373.png'
 import img3 from '../../../Image_Icon/Icon/Group 1374.png'
@@ -66,7 +67,7 @@ const Services = () => {
           </Grid>
         </Grid>
         <Box sx={{ display: 'flex', justifyContent: 'center', pt: 7 }}>
-          <Button variant="contained">Explore more</Button>
+          <PrimaryButton variant="contained">Explore more</PrimaryButton>
         </Box>
       </Container>
     </Box>
