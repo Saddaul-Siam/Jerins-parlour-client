@@ -13,7 +13,7 @@ const Services = () => {
   return (
     <Box sx={{ height: '677px' }}>
       <Typography sx={{ display: 'flex', justifyContent: 'center', py: 9, fontSize: 34, fontWeight: 700 }}>
-        Our Awesome Services
+        Our Awesome<Box sx={{color:'#F63E7B',pl:1}}>  Services</Box>
       </Typography>
       <Container>
         <Grid container spacing={2}>

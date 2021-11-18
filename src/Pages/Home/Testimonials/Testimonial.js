@@ -24,7 +24,7 @@ const Testimonial = ({ review }) => {
           <Typography variant="body" color="text.secondary" >
             {review.review.split(' ').slice(0, 40).toString().replace(/,/g, ' ')}
           </Typography>
-          <Typography variant="body1" sx={{pt:2 }}>
+          <Typography variant="body1" sx={{pt:2, color:'#FFAC0C'}}>
             <Rating
               readonly
               initialRating={review.rating}

@@ -160,10 +160,10 @@ const Navigation = (props) => {
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/home">Home</Link></Button>
                 <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/explore">Explore</Link></Button>
-                {/* {user?.email &&
-                  <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/dashboard">Dashboard</Link></Button>}
-                {user.email ? '' : <Link style={{ textDecoration: 'none', color: 'black' }} to="/login"><Button color="inherit">Login</Button></Link>}
-                {user.email && <IconButton
+                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/dashboard">Dashboard</Link></Button>
+                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/login">Login</Link></Button>
+                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/register">Register</Link></Button>
+                <IconButton
                   size="large"
                   edge="end"
                   aria-label="account of current user"
@@ -173,7 +173,7 @@ const Navigation = (props) => {
                   color="inherit"
                 >
                   <AccountCircle />
-                </IconButton>} */}
+                </IconButton>
               </Box>
               <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
