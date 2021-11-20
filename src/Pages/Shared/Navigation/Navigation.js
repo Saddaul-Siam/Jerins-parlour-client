@@ -16,7 +16,7 @@ import Slide from '@mui/material/Slide';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
 // import PrimaryButton from '../../../StyledComponent/MuiButton';
-
+import logo from '../../../Image_Icon/Group 33092.png'
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -154,7 +154,7 @@ const Navigation = (props) => {
                 noWrap
                 component="div"
               >
-                <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/">BIKE BUZZ</NavLink>
+                <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/"> <img style={{width:'127px'}} src={logo} alt="" /> </NavLink>
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
