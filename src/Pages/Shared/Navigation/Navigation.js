@@ -10,13 +10,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Link, NavLink } from 'react-router-dom';
 import { Button, Container } from '@mui/material';
-// import useAuth from '../../../Hooks/useAuth';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
-// import PrimaryButton from '../../../StyledComponent/MuiButton';
 import logo from '../../../Image_Icon/Group 33092.png'
+import useAuth from '../../../Hooks/useAuth';
+import PrimaryButton from '../../../CoustomStyle/MuiButton';
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -45,7 +45,7 @@ const Navigation = (props) => {
 
   });
   const { navbarColor } = useStyle();
-  // const { user, logOut } = useAuth()
+  const { user, logOut } = useAuth()
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -88,13 +88,13 @@ const Navigation = (props) => {
       onClose={handleMenuClose}
     >
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        {/* {user?.email && <MenuItem onClick={handleMenuClose}>{user.displayName}</MenuItem>} */}
+        {user?.email && <MenuItem onClick={handleMenuClose}>{user.displayName}</MenuItem>}
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        {/* {user?.email && <MenuItem onClick={handleMenuClose}>{user.email}</MenuItem>} */}
+        {user?.email && <MenuItem onClick={handleMenuClose}>{user.email}</MenuItem>}
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        {/* {user?.email && <MenuItem onClick={handleMenuClose}><PrimaryButton color="inherit" onClick={logOut}>Log Out</PrimaryButton></MenuItem>} */}
+        {user?.email && <MenuItem onClick={handleMenuClose}><PrimaryButton color="inherit" onClick={logOut}>Log Out</PrimaryButton></MenuItem>}
       </Box>
     </Menu>
   );

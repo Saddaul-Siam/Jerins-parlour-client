@@ -10,11 +10,13 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Box } from '@mui/system';
 import PrimaryButton from '../../../CoustomStyle/MuiButton';
+import useAuth from '../../../Hooks/useAuth';
 
 const Order = () => {
   const { serviceId } = useParams();
   const [service, setService] = useState({});
-  const { title, description, image, price} = service;
+  const { title, description, image, price } = service;
+  const { user } = useAuth()
 
   useEffect(() => {
     fetch(`http://localhost:5000/services/${serviceId}`)
@@ -27,14 +29,17 @@ const Order = () => {
   const onSubmit = data => {
     data.productName = title
     data.price = price
+    data.image = image
+    data.description = description
     data.status = "pending"
-    fetch(`https://bike-buzz.herokuapp.com/order`, {
+    fetch(`http://localhost:5000/booking`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         if (data.acknowledged) {
           reset()
         }
@@ -79,16 +84,16 @@ const Order = () => {
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Product Name</Typography>
-            <input className={input} value={service.name} {...register("productName")} type="text" required />
+            <input className={input} value={service.title} {...register("productName")} type="text" required />
 
             <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Price</Typography>
             <input className={input} value={service.price} {...register("price")} type="number" required />
 
             <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Your Name</Typography>
-            <input className={input} /* defaultValue={user.displayName}  */ {...register("name")} type="text" required />
+            <input className={input} defaultValue={user?.displayName}   {...register("name")} type="text" required />
 
             <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Email</Typography>
-            <input className={input} /* defaultValue={user.email} */ {...register("email")} type="email" required />
+            <input className={input} defaultValue={user?.email}  {...register("email")} type="email" required />
 
             <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Address</Typography>
             <input className={input} placeholder="Your Address"  {...register("address")} type="text" required />

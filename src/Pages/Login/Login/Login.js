@@ -6,8 +6,22 @@ import PrimaryButton from '../../../CoustomStyle/MuiButton';
 import Navigation from '../../Shared/Navigation/Navigation';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import useAuth from '../../../Hooks/useAuth';
 
 const Login = () => {
+  const {
+    registerUser,
+    loginUser,
+    logOut,
+    error,
+    signInWithGoogle,
+
+
+  } = useAuth();
+
+  const handleGoogleLogin = () => {
+    signInWithGoogle()
+  }
   return (
     <Box>
       <Navigation />
@@ -36,7 +50,7 @@ const Login = () => {
         </Typography>
         <Button variant="outlined"><FacebookIcon />  Continue with Facebook</Button>
         <br />
-        <Button variant="outlined"><GoogleIcon />  Continue with Google</Button>
+        <Button variant="outlined" onClick={() => handleGoogleLogin()}><GoogleIcon />  Continue with Google</Button>
       </Box>
     </Box>
   );

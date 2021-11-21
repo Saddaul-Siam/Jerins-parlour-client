@@ -16,29 +16,32 @@ import ManageService from "./Pages/Dashboard/Admin/ManageService/ManageService";
 import AddService from "./Pages/Dashboard/Admin/AddService/AddService";
 import Explore from "./Pages/Explore/Explore";
 import Order from "./Pages/Orders/Order/Order";
+import AuthProvider from "./Context/AuthProvider";
 
 function App() {
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/service/:serviceId" element={<Order />} />
-        <Route path="/dashboard" element={<Dashboard />} >
-          <Route path="/dashboard" element={<DashboardHome />} />
-          <Route path="/dashboard/book" element={< Book />} />
-          <Route path="/dashboard/bookingList" element={< BookingList />} />
-          <Route path="/dashboard/review" element={< Review />} />
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/service/:serviceId" element={<Order />} />
+          <Route path="/dashboard" element={<Dashboard />} >
+            <Route path="/dashboard" element={<DashboardHome />} />
+            <Route path="/dashboard/book" element={< Book />} />
+            <Route path="/dashboard/bookingList" element={< BookingList />} />
+            <Route path="/dashboard/review" element={< Review />} />
 
-          <Route path="/dashboard/orderList" element={< OrderList />} />
-          <Route path="/dashboard/makeAdmin" element={< MakeAdmin />} />
-          <Route path="/dashboard/manageService" element={< ManageService />} />
-          <Route path="/dashboard/addService" element={< AddService />} />
-        </Route>
-      </Routes>
+            <Route path="/dashboard/orderList" element={< OrderList />} />
+            <Route path="/dashboard/makeAdmin" element={< MakeAdmin />} />
+            <Route path="/dashboard/manageService" element={< ManageService />} />
+            <Route path="/dashboard/addService" element={< AddService />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </div>
   );
 }
