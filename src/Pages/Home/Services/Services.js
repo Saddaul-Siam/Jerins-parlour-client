@@ -1,4 +1,4 @@
-import { Container, Grid,  Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -20,9 +20,9 @@ const Services = () => {
       </Typography>
       <Container>
         <Grid container spacing={2}>
-          {
-            services.map(service => <Service service={service} key={service._id}></Service>)
-          }
+            {
+              services.map(service => <Service service={service} key={service._id}></Service>)
+            }
         </Grid>
         <Box sx={{ display: 'flex', justifyContent: 'center', pt: 7 }}>
           <Link to="/explore" style={{ textDecoration: 'none' }}><PrimaryButton variant="contained">Explore more</PrimaryButton></Link>

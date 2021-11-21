@@ -14,16 +14,20 @@ import OrderList from "./Pages/Dashboard/Admin/OrderList/OrderList";
 import MakeAdmin from "./Pages/Dashboard/Admin/MakeAdmin/MakeAdmin";
 import ManageService from "./Pages/Dashboard/Admin/ManageService/ManageService";
 import AddService from "./Pages/Dashboard/Admin/AddService/AddService";
+import Explore from "./Pages/Explore/Explore";
+import Order from "./Pages/Orders/Order/Order";
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="home" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="dashboard" element={<Dashboard />} >
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/service/:serviceId" element={<Order />} />
+        <Route path="/dashboard" element={<Dashboard />} >
           <Route path="/dashboard" element={<DashboardHome />} />
           <Route path="/dashboard/book" element={< Book />} />
           <Route path="/dashboard/bookingList" element={< BookingList />} />
