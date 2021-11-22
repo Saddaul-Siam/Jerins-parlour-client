@@ -1,31 +1,45 @@
+import { Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Box } from '@mui/system';
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import PrimaryButton from '../../../CoustomStyle/MuiButton';
+import useAuth from '../../../Hooks/useAuth';
 
 const Review = () => {
+  const { user } = useAuth()
+
+  const { register, handleSubmit, reset, formState: { errors } } = useForm()
+  const onSubmit = data => { console.log(data) }
+
+  const useStyle = makeStyles({
+    input: {
+      width: '50%',
+      height: "50px",
+      marginBottom: 15,
+      // border: 0,
+      // borderBottom: '1px solid black'
+    },
+
+  })
+
+  const { input } = useStyle()
   return (
     <div>
-      <h2>Review</h2>
+      <Box sx={{ py: 2 }}>
+        <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Review</Typography>
+      </Box>
       <form onSubmit={handleSubmit(onSubmit)}>
-            <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Product Name</Typography>
-            <input className={input} value={service.title} {...register("productName")} type="text" required />
-
-            <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Price</Typography>
-            <input className={input} value={service.price} {...register("price")} type="number" required />
-
-            <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Your Name</Typography>
-            <input className={input} defaultValue={user?.displayName}   {...register("name")} type="text" required />
-
-            <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Email</Typography>
-            <input className={input} defaultValue={user?.email}  {...register("email")} type="email" required />
-
-            <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>Address</Typography>
-            <input className={input} placeholder="Your Address"  {...register("address")} type="text" required />
-
-            <Typography variant="subtitle" sx={{ fontWeight: 'bold' }}>City</Typography>
-            <input className={input} placeholder="Your City"   {...register("city")} type="text" required />
-            {errors.exampleRequired && <span>This field is required</span>}
-            <PrimaryButton className={input} type="submit">Order Now</PrimaryButton>
-          </form>
-    </div>
+        <input className={input} {...register("name")} type="text" required value={user.displayName} />
+        <br />
+        <input className={input} {...register("email")} type="text" required value={user.email} />
+        <br />
+        <textarea style={{ width: '50%', fontFamily: 'roboto', padding: '10px' }} rows={10} {...register("review")} type="text" required placeholder="Review" />
+        {errors.exampleRequired && <span>This field is required</span>}
+        <br />
+        <PrimaryButton type="submit">Order Now</PrimaryButton>
+      </form>
+    </div >
   );
 };
 
