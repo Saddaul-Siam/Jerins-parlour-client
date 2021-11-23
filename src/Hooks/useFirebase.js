@@ -7,28 +7,38 @@ initializeFirebase();
 const useFirebase = () => {
   const [error, setError] = useState('')
   const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [authError, setAuthError] = useState(true);
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
   const registerUser = (email, password) => {
+    setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // const user = userCredential.user;
       })
       .catch((error) => {
         setError(error.message)
-      });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
   };
 
   const loginUser = (email, password) => {
+    setIsLoading(true)
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // const user = userCredential.user;
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
   };
 
   const logOut = () => {
@@ -40,16 +50,22 @@ const useFirebase = () => {
   }
 
 
-  const signInWithGoogle = () => {
+  const signInWithGoogle = (location, navigate) => {
+    setIsLoading(true)
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        setUser(user);
-      }).catch((error) => {
-        setError(error.message);
-      });
-  };
 
+        // save to database
+        saveUser(user.email, user.displayName, 'PUT');
+        setAuthError("");
+        const destination = location?.state?.from || '/';
+        navigate(destination)
+      }).catch((error) => {
+        // setAuthError(error.message)
+      })
+      .finally(() => setIsLoading(false))
+  }
 
   // onAuthStateChanged 
   useEffect(() => {
@@ -59,9 +75,22 @@ const useFirebase = () => {
       } else {
         setUser({})
       }
+      setIsLoading(false);
     });
     return () => unsubscribe
   }, [auth]);
+
+  // save user information
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch(`https://bike-buzz.herokuapp.com/users`, {
+      method: method,
+      headers: { 'content-Type': 'application/json' },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(result => console.log(result))
+  };
 
   return {
     user,
@@ -70,6 +99,8 @@ const useFirebase = () => {
     logOut,
     error,
     signInWithGoogle,
+    isLoading,
+    authError,
 
 
   }

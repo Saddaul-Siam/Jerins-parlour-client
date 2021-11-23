@@ -7,12 +7,15 @@ import Navigation from '../../Shared/Navigation/Navigation';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import useAuth from '../../../Hooks/useAuth';
-
+import { useNavigate, useLocation } from 'react-router-dom';
 const Login = () => {
   const { signInWithGoogle } = useAuth();
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const handleGoogleLogin = () => {
-    signInWithGoogle()
+    signInWithGoogle(location, navigate)
   }
   return (
     <Box>

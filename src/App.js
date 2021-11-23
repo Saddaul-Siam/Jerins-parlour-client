@@ -17,6 +17,7 @@ import Order from "./Pages/Orders/Order/Order";
 import AuthProvider from "./Context/AuthProvider";
 import BookingList from "./Pages/Dashboard/BookingList/BookingList";
 import OrderLists from "./Pages/Dashboard/Admin/OrderList/OrderLists";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -28,17 +29,18 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/service/:serviceId" element={<Order />} />
-          <Route path="/dashboard" element={<Dashboard />} >
-            <Route path="/dashboard" element={<DashboardHome />} />
-            <Route path="/dashboard/book" element={< Book />} />
-            <Route path="/dashboard/bookingList" element={< BookingList />} />
-            <Route path="/dashboard/review" element={< Review />} />
+          <Route path="/service/:serviceId" element={<PrivateRoute><Order /></PrivateRoute>} />
 
-            <Route path="/dashboard/orderList" element={< OrderLists />} />
-            <Route path="/dashboard/makeAdmin" element={< MakeAdmin />} />
-            <Route path="/dashboard/manageService" element={< ManageService />} />
-            <Route path="/dashboard/addService" element={< AddService />} />
+          <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} >
+            <Route path="/dashboard" element={<PrivateRoute><DashboardHome /></PrivateRoute>} />
+            <Route path="/dashboard/book" element={<PrivateRoute>< Book /></PrivateRoute>} />
+            <Route path="/dashboard/bookingList" element={<PrivateRoute>< BookingList /></PrivateRoute>} />
+            <Route path="/dashboard/review" element={<PrivateRoute>< Review /></PrivateRoute>} />
+
+            <Route path="/dashboard/orderList" element={<PrivateRoute>< OrderLists /></PrivateRoute>} />
+            <Route path="/dashboard/makeAdmin" element={<PrivateRoute>< MakeAdmin /></PrivateRoute>} />
+            <Route path="/dashboard/manageService" element={<PrivateRoute>< ManageService /></PrivateRoute>} />
+            <Route path="/dashboard/addService" element={<PrivateRoute>< AddService /></PrivateRoute>} />
           </Route>
         </Routes>
       </AuthProvider>
