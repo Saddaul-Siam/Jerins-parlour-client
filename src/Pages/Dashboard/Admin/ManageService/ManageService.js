@@ -39,6 +39,18 @@ export default function ManageService() {
       .then(data => setBookings(data));
   }, []);
 
+  const handleDelete = (id) => {
+    console.log(id);
+
+    fetch(`http://localhost:5000/deleteServices/${id}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' },
+
+    })
+    .then(res => res.json())
+    .then(data=>console.log(data))
+  }
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -60,7 +72,7 @@ export default function ManageService() {
               <StyledTableCell align="center">{row.price}</StyledTableCell>
               <StyledTableCell align="center">{row.productName}</StyledTableCell>
               <StyledTableCell align="center">{row.pay}</StyledTableCell>
-              <StyledTableCell align="center"> <Button variant="outlined" color="error">Delete</Button> </StyledTableCell>
+              <StyledTableCell align="center"> <Button variant="outlined" color="error" onClick={() => handleDelete(row._id)}>Delete</Button> </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
