@@ -9,8 +9,21 @@ import useAuth from '../../../Hooks/useAuth';
 const Review = () => {
   const { user } = useAuth()
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm()
-  const onSubmit = data => { console.log(data) }
+  const { register, handleSubmit, formState: { errors } } = useForm()
+
+  const onSubmit = data => {
+    data.email = user.email
+    data.name = user.displayName
+    console.log(data);
+    fetch('http://localhost:5000/addReview', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+
+  }
 
   const useStyle = makeStyles({
     input: {

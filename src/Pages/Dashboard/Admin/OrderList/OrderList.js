@@ -33,7 +33,7 @@ export default function OrderList() {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookings`)
+    fetch(`http://localhost:5000/allBooking`)
       .then(res => res.json())
       .then(data => setBookings(data));
   }, []);

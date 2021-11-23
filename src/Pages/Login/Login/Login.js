@@ -9,15 +9,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import useAuth from '../../../Hooks/useAuth';
 
 const Login = () => {
-  const {
-    registerUser,
-    loginUser,
-    logOut,
-    error,
-    signInWithGoogle,
-
-
-  } = useAuth();
+  const { signInWithGoogle } = useAuth();
 
   const handleGoogleLogin = () => {
     signInWithGoogle()

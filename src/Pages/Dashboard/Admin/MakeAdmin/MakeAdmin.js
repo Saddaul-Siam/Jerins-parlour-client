@@ -1,4 +1,4 @@
-import { TextField, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/system';
 import React from 'react';
@@ -18,7 +18,7 @@ const MakeAdmin = () => {
   })
 
   const { input } = useStyle()
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
   return (
     <Box>
@@ -28,7 +28,7 @@ const MakeAdmin = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <input className={input} defaultValue="abc@gmail.com" {...register("email")} />
         {errors.exampleRequired && <span>This field is required</span>}
-        <PrimaryButton sx={{ml:1}} type="submit" >Make Admin</PrimaryButton>
+        <PrimaryButton sx={{ ml: 1 }} type="submit" >Make Admin</PrimaryButton>
       </form>
     </Box>
   );
