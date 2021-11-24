@@ -17,7 +17,10 @@ const useFirebase = () => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // const user = userCredential.user;
+        const user = userCredential.user;
+
+        // save to database
+        saveUser(user.email, user.displayName, 'POST');
       })
       .catch((error) => {
         setError(error.message)
@@ -62,7 +65,7 @@ const useFirebase = () => {
         const destination = location?.state?.from || '/';
         navigate(destination)
       }).catch((error) => {
-        // setAuthError(error.message)
+        setAuthError(error.message)
       })
       .finally(() => setIsLoading(false))
   }
@@ -83,7 +86,7 @@ const useFirebase = () => {
   // save user information
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch(`https://bike-buzz.herokuapp.com/users`, {
+    fetch(`http://localhost:5000/users`, {
       method: method,
       headers: { 'content-Type': 'application/json' },
       body: JSON.stringify(user)
