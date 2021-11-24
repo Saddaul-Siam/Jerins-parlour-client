@@ -15,13 +15,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Outlet, Link } from "react-router-dom";
+import useAuth from '../../../Hooks/useAuth';
 
 const drawerWidth = 240;
 
 const Dashboard = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const { admin } = useAuth()
+  console.log(admin);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -30,7 +32,8 @@ const Dashboard = (props) => {
     <div>
       <Toolbar />
       <Divider />
-      <List>
+
+      {admin.admin ? " " : <List List >
         <Link to="/dashboard/book">
           <ListItem button>
             <ListItemIcon>
@@ -61,52 +64,51 @@ const Dashboard = (props) => {
             </ListItemText>
           </ListItem>
         </Link>
-      </List>
-
-      <Divider />
-      <List>
-        <Link to="/dashboard/orderList">
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText >
-              Order List
-            </ListItemText>
-          </ListItem>
-        </Link>
-        <Link to="/dashboard/addService">
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText >
-              Add Service
-            </ListItemText>
-          </ListItem>
-        </Link>
-        <Link to="/dashboard/makeAdmin">
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText >
-              Make Admin
-            </ListItemText>
-          </ListItem>
-        </Link>
-        <Link to="/dashboard/manageService">
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText >
-              Manage Service
-            </ListItemText>
-          </ListItem>
-        </Link>
-      </List>
-    </div>
+      </List>}
+      {admin.admin &&
+        <List>
+          <Link to="/dashboard/orderList">
+            <ListItem button>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText >
+                Order List
+              </ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/addService">
+            <ListItem button>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText >
+                Add Service
+              </ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/makeAdmin">
+            <ListItem button>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText >
+                Make Admin
+              </ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/manageService">
+            <ListItem button>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText >
+                Manage Service
+              </ListItemText>
+            </ListItem>
+          </Link>
+        </List>}
+    </div >
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;

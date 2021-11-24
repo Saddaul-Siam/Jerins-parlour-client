@@ -18,6 +18,7 @@ import AuthProvider from "./Context/AuthProvider";
 import BookingList from "./Pages/Dashboard/BookingList/BookingList";
 import OrderLists from "./Pages/Dashboard/Admin/OrderList/OrderLists";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import AdminRoute from "./PrivateRoute/AdminRoute";
 
 function App() {
   return (
@@ -37,10 +38,10 @@ function App() {
             <Route path="/dashboard/bookingList" element={<PrivateRoute>< BookingList /></PrivateRoute>} />
             <Route path="/dashboard/review" element={<PrivateRoute>< Review /></PrivateRoute>} />
 
-            <Route path="/dashboard/orderList" element={<PrivateRoute>< OrderLists /></PrivateRoute>} />
-            <Route path="/dashboard/makeAdmin" element={<PrivateRoute>< MakeAdmin /></PrivateRoute>} />
-            <Route path="/dashboard/manageService" element={<PrivateRoute>< ManageService /></PrivateRoute>} />
-            <Route path="/dashboard/addService" element={<PrivateRoute>< AddService /></PrivateRoute>} />
+            <Route path="/dashboard/orderList" element={<AdminRoute>< OrderLists /></AdminRoute>} />
+            <Route path="/dashboard/makeAdmin" element={<AdminRoute>< MakeAdmin /></AdminRoute>} />
+            <Route path="/dashboard/manageService" element={<AdminRoute>< ManageService /></AdminRoute>} />
+            <Route path="/dashboard/addService" element={<AdminRoute>< AddService /></AdminRoute>} />
           </Route>
         </Routes>
       </AuthProvider>
