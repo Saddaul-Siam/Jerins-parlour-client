@@ -16,13 +16,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Outlet, Link } from "react-router-dom";
 import useAuth from '../../../Hooks/useAuth';
+import PrimaryButton from '../../../CoustomStyle/MuiButton';
 
 const drawerWidth = 240;
 
 const Dashboard = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const { admin } = useAuth()
+  const { admin, logOut } = useAuth()
   console.log(admin);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -34,7 +35,17 @@ const Dashboard = (props) => {
       <Divider />
 
       {admin.admin ? " " : <List List >
-        <Link to="/dashboard/book">
+        <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+          <ListItem button>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText >
+              Home
+            </ListItemText>
+          </ListItem>
+        </Link>
+        <Link to="/dashboard/book" style={{ textDecoration: 'none', color: 'black' }}>
           <ListItem button>
             <ListItemIcon>
               <InboxIcon />
@@ -44,7 +55,7 @@ const Dashboard = (props) => {
             </ListItemText>
           </ListItem>
         </Link>
-        <Link to="/dashboard/bookingList">
+        <Link to="/dashboard/bookingList" style={{ textDecoration: 'none', color: 'black' }}>
           <ListItem button>
             <ListItemIcon>
               <InboxIcon />
@@ -54,7 +65,7 @@ const Dashboard = (props) => {
             </ListItemText>
           </ListItem>
         </Link>
-        <Link to="/dashboard/review">
+        <Link to="/dashboard/review" style={{ textDecoration: 'none', color: 'black' }}>
           <ListItem button>
             <ListItemIcon>
               <InboxIcon />
@@ -64,10 +75,26 @@ const Dashboard = (props) => {
             </ListItemText>
           </ListItem>
         </Link>
+        <ListItem >
+          <ListItemText >
+            <PrimaryButton sx={{ width: '100%' }} color="inherit" onClick={logOut}>Log Out</PrimaryButton>
+          </ListItemText>
+        </ListItem>
       </List>}
+
       {admin.admin &&
         <List>
-          <Link to="/dashboard/orderList">
+          <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+            <ListItem button>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText >
+                Home
+              </ListItemText>
+            </ListItem>
+          </Link>
+          <Link to="/dashboard/orderList" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button>
               <ListItemIcon>
                 <InboxIcon />
@@ -77,7 +104,7 @@ const Dashboard = (props) => {
               </ListItemText>
             </ListItem>
           </Link>
-          <Link to="/dashboard/addService">
+          <Link to="/dashboard/addService" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button>
               <ListItemIcon>
                 <InboxIcon />
@@ -87,7 +114,7 @@ const Dashboard = (props) => {
               </ListItemText>
             </ListItem>
           </Link>
-          <Link to="/dashboard/makeAdmin">
+          <Link to="/dashboard/makeAdmin" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button>
               <ListItemIcon>
                 <InboxIcon />
@@ -97,7 +124,7 @@ const Dashboard = (props) => {
               </ListItemText>
             </ListItem>
           </Link>
-          <Link to="/dashboard/manageService">
+          <Link to="/dashboard/manageService" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button>
               <ListItemIcon>
                 <InboxIcon />
@@ -107,6 +134,11 @@ const Dashboard = (props) => {
               </ListItemText>
             </ListItem>
           </Link>
+          <ListItem >
+            <ListItemText >
+              <PrimaryButton sx={{ width: '100%' }} color="inherit" onClick={logOut}>Log Out</PrimaryButton>
+            </ListItemText>
+          </ListItem>
         </List>}
     </div >
   );
@@ -172,7 +204,7 @@ const Dashboard = (props) => {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }}}
       >
         <Toolbar />
         <Outlet />

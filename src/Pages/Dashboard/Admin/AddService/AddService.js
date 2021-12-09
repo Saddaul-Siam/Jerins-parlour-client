@@ -2,6 +2,7 @@ import { Button, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import { useForm } from "react-hook-form";
+import PrimaryButton from '../../../../CoustomStyle/MuiButton';
 import upload from "../../../../Image_Icon/Icon/cloud-upload-outline 1.png"
 
 
@@ -29,7 +30,7 @@ const AddService = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
@@ -57,7 +58,7 @@ const AddService = () => {
           </Grid>
         </Grid>
         {errors.exampleRequired && <span>This field is required</span>}
-        <input type="submit" />
+        <PrimaryButton type="submit">Submit</PrimaryButton>
       </form>
     </Box>
   );

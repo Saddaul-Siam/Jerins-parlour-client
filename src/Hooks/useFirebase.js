@@ -59,7 +59,7 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-
+        console.log(user);
         // save to database
         saveUser(user.email, user.displayName, 'PUT');
         setAuthError("");

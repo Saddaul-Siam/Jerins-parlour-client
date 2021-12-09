@@ -123,8 +123,8 @@ const Navigation = (props) => {
         <Link style={{ textDecoration: 'none', color: 'black' }} to="/explore"><Button color="inherit">Explore</Button></Link>
       </MenuItem>
 
-      {/* {user?.email && <MenuItem> <Link style={{ textDecoration: 'none', color: 'black' }} to="/dashboard"><Button color="inherit">Dashboard</Button></Link> </MenuItem>} */}
-      {/* {user.email ? '' : <MenuItem><Link style={{ textDecoration: 'none', color: 'black' }} to="/login"><Button color="inherit">Login</Button></Link> </MenuItem>} */}
+      {user?.email && <MenuItem> <Link style={{ textDecoration: 'none', color: 'black' }} to="/dashboard"><Button color="inherit">Dashboard</Button></Link> </MenuItem>}
+      {user.email ? '' : <MenuItem><Link style={{ textDecoration: 'none', color: 'black' }} to="/login"><Button color="inherit">Login</Button></Link> </MenuItem>}
 
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -134,6 +134,7 @@ const Navigation = (props) => {
           aria-haspopup="true"
           color="inherit"
         >
+
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
@@ -154,7 +155,7 @@ const Navigation = (props) => {
                 noWrap
                 component="div"
               >
-                <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/"> <img style={{width:'127px'}} src={logo} alt="" /> </NavLink>
+                <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/"> <img style={{ width: '127px' }} src={logo} alt="" /> </NavLink>
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -162,7 +163,6 @@ const Navigation = (props) => {
                 <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/explore">Explore</Link></Button>
                 <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/dashboard">Dashboard</Link></Button>
                 <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/login">Login</Link></Button>
-                <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'black' }} to="/register">Register</Link></Button>
                 <IconButton
                   size="large"
                   edge="end"
@@ -172,7 +172,8 @@ const Navigation = (props) => {
                   onClick={handleProfileMenuOpen}
                   color="inherit"
                 >
-                  <AccountCircle />
+                  {user.photoURL ? <img width="40%" style={{ borderRadius: '50%' }} src={user?.photoURL} alt="" />
+                    : <AccountCircle sx={{ color: 'black' }} />}
                 </IconButton>
               </Box>
               <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
